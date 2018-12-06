@@ -1,9 +1,13 @@
-import '@babel/polyfill'
+// import '@babel/polyfill'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Aragon, { providers } from '@aragon/client'
 import App from './App'
+
+
+
+
 
 class ConnectedApp extends React.Component {
   state = {
@@ -14,9 +18,6 @@ class ConnectedApp extends React.Component {
   componentDidMount() {
     window.addEventListener('message', this.handleWrapperMessage)
 
-    // If using Parcel, reload instead of using HMR.
-    // HMR makes the app disconnect from the wrapper and the state is empty until a reload
-    // See: https://github.com/parcel-bundler/parcel/issues/289
     if (module.hot) {
       module.hot.dispose(() => {
         window.location.reload();
@@ -49,9 +50,13 @@ class ConnectedApp extends React.Component {
     window.parent.postMessage({ from: 'app', name, value }, '*')
   }
   render() {
-    return <App {...this.state} />
+    return <App  />
   }
 }
+
+
+
+
 ReactDOM.render(
   <ConnectedApp />,
   document.getElementById('root')
